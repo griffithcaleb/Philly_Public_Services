@@ -9,6 +9,7 @@ import Services from './components/services.js'
 import Food from './components/food.js'
 import Shelter from './components/shelter.js'
 import phoneArgs from './components/phoneArgs.js'
+import Email from './components/requestToPostService.js'
 
 
 class HomeScreen extends React.Component {
@@ -25,21 +26,29 @@ makeCall = () => {
         <TouchableOpacity
         style = {styles.buttons}
         onPress={() => this.props.navigation.navigate('Services')}>
-        <Text>Find Services </Text>
+        <Text style = {{fontWeight:'bold'}}>Find Services </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
         style = {styles.buttons}
         onPress={() => this.props.navigation.navigate('PhoneNumbers')}>
-        <Text>Phone Numbers </Text>
+        <Text style = {{fontWeight:'bold'}}>Phone Numbers </Text>
         </TouchableOpacity>
+
+        <Email/>
 
         <TouchableOpacity
           style= {styles.emergency}
           onPress={()=>this.makeCall()}>
-        <Text> Code Blue Emergency Call </Text>
+        <Text style = {{fontWeight:'bold'}}> Code Blue Emergency Call </Text>
         </TouchableOpacity>
+
+
+
+
+
       </View>
+
     );
   }
 }

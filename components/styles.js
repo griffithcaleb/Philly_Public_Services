@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
    headers:{
      fontWeight:'bold',
      fontSize: 30,
-     paddingBottom: 200,
+     paddingBottom: 100,
      paddingTop: 50
    },
    phoneHeaders:{
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
    },
    buttons:{
      borderRadius: 4,
+     fontWeight: 'bold',
      borderWidth: 1,
      borderColor: 'black',
      padding:10,
@@ -43,7 +44,8 @@ const styles = StyleSheet.create({
      padding:10,
      fontSize: 16,
      marginBottom:20,
-     alignItems: 'center'
+     alignItems: 'center',
+     fontWeight: 'bold'
    },
    emergency:{
      borderRadius: 4,
@@ -52,12 +54,14 @@ const styles = StyleSheet.create({
      padding:10,
      fontSize: 16,
      backgroundColor: 'red',
-     marginTop: 200
+     marginBottom: 50
+
    },
    itemHeader:{
      fontSize: 16,
      fontWeight: 'bold',
      paddingBottom: 5,
+     textDecorationLine: 'underline'
    },
    address:{
      fontSize:15,
@@ -72,8 +76,8 @@ const styles = StyleSheet.create({
    },
    distance:{
      fontSize: 15,
-     fontWeight:'bold',
-     paddingTop: 5
+
+     paddingTop: 10
 
    }
 });

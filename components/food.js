@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {StyleSheet, Button, View, Text,ScrollView,TouchableOpacity } from 'react-native';
+import {StyleSheet, Button, View, Text,ScrollView,TouchableOpacity,Linking} from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import call from 'react-native-phone-call'
 import styles from "./styles.js"
@@ -23,13 +23,26 @@ class Food extends React.Component {
 
 
   render() {
-    var moment = require('moment-timezone');
+
+    let moment = require('moment-timezone');
     let distanceWithoutCommas
     let view
     const showFood =
           <View>
           <>{this.props.foodServices.map((service,index)=>{
-          console.log(service.distance);
+
+
+          // for handling the location of google maps search on press of address
+            let searchUrl = service.physical_address.split(' ')
+            searchUrl.push('Philadelphia', 'PA')
+            var quotedAndPlusSigns = "'" + searchUrl.join("'+'") + "'";
+
+            let url = 'https://www.google.com/maps/search/' + quotedAndPlusSigns
+
+
+
+            //handling distace from current geolocation
+
           if (service.distance !== null ){
           let splitTheDistance = service.distance.split('')
           let distance
@@ -118,9 +131,12 @@ class Food extends React.Component {
                 }}
 
                   key={index}>
-                <Text style ={{fontStyle:'italic',paddingBottom:20}}>Services listed by proximity to current location. </Text>
+
                 <Text style={styles.itemHeader}> {service.name} </Text>
-                <Text style={styles.address}>{service.physical_address}</Text>
+                <Text
+                onPress={() => Linking.openURL(url)}
+                style={styles.address,{color:'blue', fontSize: 15, paddingTop: 10, paddingBottom: 10, fontWeight:'bold'}}>
+                {service.physical_address}</Text>
                 <Text > Time of Meals: </Text>
                 <Text style={styles.info} >{service.primary_information}</Text>
                 <Text style={styles.distance}> Distance: </Text>
@@ -144,11 +160,11 @@ class Food extends React.Component {
 
      }
     return (
-<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
+<ScrollView >
+<Text style ={{fontStyle:'italic',paddingBottom:20}}>Services listed by proximity to current location. </Text>
 
        {view}
-</View>
+</ScrollView>
 
     );
   }

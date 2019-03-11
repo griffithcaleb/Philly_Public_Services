@@ -8,6 +8,7 @@ import Food from './food.js'
 import Shelter from './shelter.js'
 
 
+
 class Services extends React.Component {
   constructor(props){
     super(props)
@@ -89,13 +90,13 @@ showShelters = () => {
         <TouchableOpacity
           style={styles.buttons}
           onPress={() => {this.showFoodService()}}>
-          <Text> Food </Text>
+          <Text style={{fontWeight:'bold'}}> Food </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.buttons}
             onPress={() => {this.showShelters()}}>
-            <Text> Shelter </Text>
+            <Text style={{fontWeight:'bold'}}> Shelter </Text>
             </TouchableOpacity>
         <Food
 
@@ -106,6 +107,7 @@ showShelters = () => {
           shelterServices = {this.state.shelterServices}
           showShelters ={this.state.showFoodService}
         />
+
 
 
       </View>
