@@ -62,6 +62,28 @@ const styles = StyleSheet.create({
      fontSize: 16,
      backgroundColor: 'red',
      marginTop: 200
+   },
+   itemHeader:{
+     fontSize: 16,
+     fontWeight: 'bold',
+     paddingBottom: 5,
+   },
+   address:{
+     fontSize:14,
+     paddingBottom:2,
+     fontWeight:'bold'
+   },
+   info:{
+     fontSize:15,
+     fontWeight: 'bold',
+     paddingBottom:2,
+     paddingTop: 5
+   },
+   distance:{
+     fontSize: 13,
+     fontWeight:'bold',
+     paddingTop: 5
+
    }
 });
 
@@ -230,16 +252,19 @@ showShelters = () => {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Services Screen</Text>
+        <Text style = {styles.subHeaders}>Services Screen</Text>
 
-        <Button
-          title = "Food"
-          onPress={() => {this.showFoodService()}}
-         />
-         <Button
-           title = "Shelters"
-           onPress={() => {this.showShelters()}}
-          />
+        <TouchableOpacity
+          style={styles.buttons}
+          onPress={() => {this.showFoodService()}}>
+          <Text> Food </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.buttons}
+            onPress={() => {this.showShelters()}}>
+            <Text> Shelter </Text>
+            </TouchableOpacity>
         <Food
 
           foodServices = {this.state.foodServices}
@@ -293,9 +318,9 @@ class Food extends React.Component {
                distance = splitTheDistance.slice(0,i+3).join()
               }
             }
-             distanceWithoutCommas = distance.replace(/,/g,"") +' Miles'
+             distanceWithoutCommas = <Text style ={{fontStyle:'italic',fontWeight:'bold'}} > {distance.replace(/,/g,"")} + Miles </Text>
           } else {
-            distanceWithoutCommas = <Text style={{color:"red"}}>please activate location services</Text>
+            distanceWithoutCommas = <Text style={{color:"red",fontStyle:'italic',fontWeight:'bold'}}>please activate location services</Text>
           }
 
             //handling open or closed
@@ -356,13 +381,14 @@ class Food extends React.Component {
 
             let openOrClosed = ()=>{
               if((currentTimeSum < endTimeSum) && (currentTimeSum > startTimeSum) && (openToday)){
-              return(<Text style={{color:'green'}}>Open</Text>);
+              return(<Text style={{color:'green',fontWeight:'bold',fontSize:16}}>Open</Text>);
             } else{
-              return(<Text style={{color:'red'}}>Closed</Text>);
+              return(<Text style={{color:'red',fontWeight:'bold',fontSize:16}}>Closed</Text>);
             }
             }
 
             return(
+
                 <View style={{
 
                   borderBottomWidth: 2,
@@ -370,14 +396,16 @@ class Food extends React.Component {
                   padding: 5,
                   alignItems: 'center'
                 }}
+
                   key={index}>
-                <Text> {service.name} </Text>
-                <Text >{service.physical_address}</Text>
+                <Text style ={{fontStyle:'italic',paddingBottom:20}}>Services listed by proximity to current location. </Text>
+                <Text style={styles.itemHeader}> {service.name} </Text>
+                <Text style={styles.address}>{service.physical_address}</Text>
                 <Text > Time of Meals: </Text>
-                <Text >{service.primary_information}</Text>
-                <Text > Distance From Current Location: </Text>
-                <Text >{distanceWithoutCommas}</Text>
-                <Text > {openOrClosed()} </Text>
+                <Text style={styles.info} >{service.primary_information}</Text>
+                <Text style={styles.distance}> Distance: </Text>
+                <Text style={{paddingBottom:10}}>{distanceWithoutCommas}</Text>
+                <Text style={{fontWeight:'bold'}} > Currently: {openOrClosed()} </Text>
                 <Button
                 title="Call"
                 onPress={() => {
@@ -397,6 +425,7 @@ class Food extends React.Component {
      }
     return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
 
        {view}
 </View>
