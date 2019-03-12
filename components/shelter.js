@@ -29,7 +29,15 @@ class Shelter extends React.Component {
     const showShelters =
           <View>
           <>{this.props.shelterServices.map((service,index)=>{
-          console.log(service.distance);
+            // handling search url for location of shelter
+            let searchUrl = service.physical_address.split(' ')
+            searchUrl.push('Philadelphia', 'PA')
+            var quotedAndPlusSigns = "'" + searchUrl.join("'+'") + "'";
+
+            let url = 'https://www.google.com/maps/search/' + quotedAndPlusSigns
+
+
+
           if (service.distance !== null ){
           let splitTheDistance = service.distance.split('')
           let distance
@@ -38,7 +46,7 @@ class Shelter extends React.Component {
                distance = splitTheDistance.slice(0,i+3).join()
               }
             }
-             distanceWithoutCommas = <Text style ={{fontStyle:'italic',fontWeight:'bold'}} > {distance.replace(/,/g,"")} + Miles </Text>
+             distanceWithoutCommas = <Text style ={{fontStyle:'italic',fontWeight:'bold'}} > {distance.replace(/,/g,"")}  Miles </Text>
           } else {
             distanceWithoutCommas = <Text style={{color:"red",fontStyle:'italic',fontWeight:'bold'}}>please activate location services</Text>
           }
@@ -120,7 +128,10 @@ class Shelter extends React.Component {
                   key={index}>
                 <Text style ={{fontStyle:'italic',paddingBottom:20}}>Services listed by proximity to current location. </Text>
                 <Text style={styles.itemHeader}> {service.name} </Text>
-                <Text style={styles.address}>{service.physical_address}</Text>
+                <Text
+                onPress={() => Linking.openURL(url)}
+                style={styles.address,{color:'blue', fontSize: 15, paddingTop: 10, paddingBottom: 10, fontWeight:'bold'}}>
+                {service.physical_address}</Text>
                 <Text style={styles.distance}> Distance: </Text>
                 <Text style={{paddingBottom:10}}>{distanceWithoutCommas}</Text>
                 <Text style={{fontWeight:'bold'}} > Currently: {openOrClosed()} </Text>
@@ -131,8 +142,9 @@ class Shelter extends React.Component {
                 }}
                  />
                  <Text > Intake Information: </Text>
+                 // website here 
                  <Text style={{color: 'blue'}}
-                  onPress={() => LinkingIOS.openURL(service.primary_information)}>
+                  onPress={() => Linking.openURL(service.primary_information)}>
                   Additional Information
                   </Text>
                  </View>

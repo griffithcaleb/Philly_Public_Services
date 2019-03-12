@@ -105,7 +105,7 @@ showShelters = () => {
            />
         <Shelter
           shelterServices = {this.state.shelterServices}
-          showShelters ={this.state.showFoodService}
+          showShelters = {this.state.showFoodService}
         />
 
 

@@ -37,6 +37,12 @@ makeCall = () => {
 
         <Email/>
 
+        <Text style = {{fontStyle: 'italic', fontWeight: 'bold', fontSize: 12, textAlign:'center', width: 300, marginBottom:10}}>
+        A Code Blue is issued when weather poses a threat to homeless induviduals without a shelter.
+        Please call if you see someone in need.
+
+        </Text>
+        
         <TouchableOpacity
           style= {styles.emergency}
           onPress={()=>this.makeCall()}>

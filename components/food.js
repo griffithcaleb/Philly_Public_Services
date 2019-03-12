@@ -51,7 +51,7 @@ class Food extends React.Component {
                distance = splitTheDistance.slice(0,i+3).join()
               }
             }
-             distanceWithoutCommas = <Text style ={{fontStyle:'italic',fontWeight:'bold'}} > {distance.replace(/,/g,"")} + Miles </Text>
+             distanceWithoutCommas = <Text style ={{fontStyle:'italic',fontWeight:'bold'}} > {distance.replace(/,/g,"")} Miles </Text>
           } else {
             distanceWithoutCommas = <Text style={{color:"red",fontStyle:'italic',fontWeight:'bold'}}>please activate location services</Text>
           }
@@ -127,7 +127,7 @@ class Food extends React.Component {
                   borderBottomWidth: 2,
                   borderColor: 'black',
                   padding: 5,
-                  alignItems: 'center'
+                  alignItems: 'center',
                 }}
 
                   key={index}>
@@ -137,17 +137,18 @@ class Food extends React.Component {
                 onPress={() => Linking.openURL(url)}
                 style={styles.address,{color:'blue', fontSize: 15, paddingTop: 10, paddingBottom: 10, fontWeight:'bold'}}>
                 {service.physical_address}</Text>
-                <Text > Time of Meals: </Text>
+                <Text >Time of Meals: </Text>
                 <Text style={styles.info} >{service.primary_information}</Text>
-                <Text style={styles.distance}> Distance: </Text>
+                <Text style={styles.distance}>Distance: </Text>
                 <Text style={{paddingBottom:10}}>{distanceWithoutCommas}</Text>
-                <Text style={{fontWeight:'bold'}} > Currently: {openOrClosed()} </Text>
-                <Button
-                title="Call"
+                <Text style={{fontWeight:'bold'}}>Currently: {openOrClosed()} </Text>
+                <TouchableOpacity
+                style={styles.callButtons}
                 onPress={() => {
                   this.handlePhoneNumberChange(service.phone_number)
-                }}
-                 />
+                }}>
+                <Text style={{color:'white'}}>Call</Text>
+                </TouchableOpacity>
                 </View>
               )
             })}

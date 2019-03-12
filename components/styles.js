@@ -36,8 +36,21 @@ const styles = StyleSheet.create({
      width: 135,
      alignItems: 'center'
    },
+   callButtons:{
+     borderRadius: 4,
+     fontWeight: 'bold',
+     borderWidth: 1,
+     borderColor: 'black',
+     padding:10,
+     fontSize: 16,
+     marginBottom:10,
+     marginTop:15,
+     width: 75,
+     alignItems: 'center',
+     backgroundColor: 'green'
+   },
    phoneButtons:{
-     width: 200,
+     width: 210,
      borderRadius: 4,
      borderWidth: 1,
      borderColor: 'black',

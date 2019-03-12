@@ -27,25 +27,25 @@ class PhoneNumbers extends React.Component {
         <TouchableOpacity
         style = {styles.phoneButtons}
         onPress={() => this.handlePhoneNumberChange('18667233014')}>
-        <Text> Domestic Violence Hotline </Text>
+        <Text style = {{fontWeight:'bold'}}> Domestic Violence Hotline </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
         style = {styles.phoneButtons}
         onPress={() => this.handlePhoneNumberChange('2152321984')}>
-        <Text> Homeless Outreach </Text>
+        <Text style = {{fontWeight:'bold'}}> Homeless Outreach </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
         style = {styles.phoneButtons}
         onPress={() => this.handlePhoneNumberChange('18774243838')}>
-        <Text> Veteran Homelessness </Text>
+        <Text style = {{fontWeight:'bold'}}> Veteran Homelessness </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
         style = {styles.phoneButtons}
         onPress={() => this.handlePhoneNumberChange('18002738255')}>
-        <Text> National Suicide Hotline</Text>
+        <Text style = {{fontWeight:'bold'}}> National Suicide Hotline</Text>
         </TouchableOpacity>
       </View>
     );
