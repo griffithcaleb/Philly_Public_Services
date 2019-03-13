@@ -50,8 +50,8 @@ sendEmail(
 ).then(() => {
     console.log('Our email successful provided to device mail ');
 }).catch(error=>{
-  Alert.alert('Install a mail client or email griffith.caleb@gmail.com for more more information.')
-  
+  Alert.alert('Install a mail client or email griffith.caleb@gmail.com for more information.')
+
 })
 
 }

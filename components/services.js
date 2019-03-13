@@ -17,6 +17,9 @@ class Services extends React.Component {
       shelterServices: [],
       showFoodServices: false,
       showShelterServices: false,
+      showOpenFood:true,
+      notDisplayingShelters:true
+
     }
   }
 //sets state based on current location this is included with react native
@@ -73,15 +76,25 @@ showFoodService = () => {
   this.setState({
     showFoodServices: true,
     showShelterServices: false,
+    notDisplayingShelters:true,
   })
 }
 showShelters = () => {
   this.setState({
     showShelterServices:true,
-    showFoodServices:false
+    showFoodServices:false,
+    showOpenFood:true,
+    notDisplayingShelters:false
+
   })
 }
 
+setStateToShowOpenFood = () => {
+  this.setState({
+    showOpenFood: true,
+
+  })
+}
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -102,10 +115,15 @@ showShelters = () => {
 
           foodServices = {this.state.foodServices}
           showFoodServices = {this.state.showFoodServices}
+          showShelters = {this.state.showShelterServices}
+          handleSettingThisState = {this.setStateToShowOpenFood}
+          showFood ={this.state.showOpenFood}
+          notDisplayingShelters={this.state.notDisplayingShelters}
+
            />
         <Shelter
           shelterServices = {this.state.shelterServices}
-          showShelters = {this.state.showFoodService}
+          showShelters = {this.state.showShelterServices}
         />
 
 

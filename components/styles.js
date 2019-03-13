@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
      fontSize:15,
      fontWeight: 'bold',
      paddingBottom:2,
-     paddingTop: 5
+     paddingTop: 5,
+     textAlign: 'center'
    },
    distance:{
      fontSize: 15,
