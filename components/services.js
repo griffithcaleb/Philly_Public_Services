@@ -70,7 +70,6 @@ class Services extends React.Component {
          })
        }
       }))
-
     }
 showFoodService = () => {
   this.setState({
@@ -111,7 +110,7 @@ setStateToShowOpenFood = () => {
             onPress={() => {this.showShelters()}}>
             <Text style={{fontWeight:'bold'}}> Shelter </Text>
             </TouchableOpacity>
-        <Food
+          <Food
 
           foodServices = {this.state.foodServices}
           showFoodServices = {this.state.showFoodServices}
@@ -121,7 +120,7 @@ setStateToShowOpenFood = () => {
           notDisplayingShelters={this.state.notDisplayingShelters}
 
            />
-        <Shelter
+         <Shelter
           shelterServices = {this.state.shelterServices}
           showShelters = {this.state.showShelterServices}
         />

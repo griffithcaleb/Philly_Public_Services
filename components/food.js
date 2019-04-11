@@ -51,7 +51,7 @@ class Food extends React.Component {
     }
     setTimeout(function(){
       sortServicesOutsideOfSetTimeout()
-    },3000)
+    },3500)
   }
 
   sortServices = (services) => {
@@ -115,6 +115,7 @@ class Food extends React.Component {
               borderColor: 'black',
               padding: 5,
               alignItems: 'center',
+              width:300
             }}
 
               key={index}>
@@ -251,7 +252,6 @@ class Food extends React.Component {
 
 
 
-
             return(
 
                 <View style={{
@@ -260,6 +260,7 @@ class Food extends React.Component {
                   borderColor: 'black',
                   padding: 5,
                   alignItems: 'center',
+                  width:300
                 }}
 
                   key={index}>
@@ -295,16 +296,16 @@ class Food extends React.Component {
          view = onlyOpen
      }
     return (
-<ScrollView>
+            <ScrollView>
 
-          <Text
-          style ={{fontStyle:'italic',paddingBottom:20,textAlign:'center'}}>
-          Services listed by proximity to current location.
-          </Text>
+              <Text
+              style ={{fontStyle:'italic',paddingBottom:20,textAlign:'center'}}>
+              Services listed by proximity to current location.
+              </Text>
 
-          {view}
+                      {view}
 
-</ScrollView>
+            </ScrollView>
 
     );
   }
